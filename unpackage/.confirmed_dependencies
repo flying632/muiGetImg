@@ -1,0 +1,13 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/new_dynamics.js",
+			"fonts/mui.ttf",
+			"js/cropper.min.js",
+			"js/getImgs.js",
+			"image/+@2x.png"
+		]
+	}
+}

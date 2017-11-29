@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" /> 
+		<link rel="stylesheet" href="css/mui.cropper.css" />
+		<style type="text/css">
+			.content {
+				margin-top: 5px;
+				width: 95%;
+			}
+			
+			img {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				float: left;
+			}
+			
+			.mui-bar .mui-icon span {
+				font-size: 18px;
+			}
+			
+			.mui-icon-checkmarkempty {
+				color: #007aff;
+				float: right;
+				margin-right: 5px;
+			}
+			
+			.mui-icon-location {
+				color: #007aff;
+			}
+			
+			.mui-table-view {
+				margin: 8px;
+			}
+			
+			.position {
+				width: 80%;
+				text-align: center;
+				background: white;
+				line-height: 30px;
+				font-size: 20px;
+			}
+			#dwtupiao{
+				width:20px;
+				height: 20px;
+				float:left;
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 id="xinzen" class="mui-title mui-badge-primary mui-badge-inverted">发布动态</h1>
+			<div id="finish" class="mui-icon mui-icon-checkmarkempty"></div>
+		</header>
+
+		<div class="mui-content">
+			<div style="text-align: center;">
+				<textarea id="content" class="content" placeholder=" " rows="6"></textarea>
+			</div>
+			 
+			<div style="text-align: center;">
+				<div id="photos">
+				</div>
+				<a id="pick" href="#cropper-sheet">
+					<img id="image" src="image/+@2x.png" />
+				</a>
+			</div>
+
+			<!--选择照片-->
+			<div id="cropper-sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+				<!-- 可选择菜单 -->
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a id="paizhao" data-type="camera">拍照</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="xiangce" data-type="gallery">相册</a>
+					</li>
+				</ul>
+				<!--取消菜单 
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#cropper-sheet"><b style="color: #ff0000;">取消</b></a>
+					</li>
+				</ul>-->
+			</div>
+		</div>
+
+		</div>
+		<script type="text/javascript" src="js/cropper.min.js"></script>
+		<script type="text/javascript" src="js/getImgs.js"></script>
+		<script src="js/mui.min.js"></script>
+ 
+		<script type="text/javascript">
+			mui.init();
+			var address;
+			mui.plusReady(function() { 
+				//上传图片
+				createUploader(); 
+			})
+			mui('#cropper-sheet').on('tap', '.mui-table-view-cell > a', function() {
+				var type = this.getAttribute('data-type');
+				mui("#cropper-sheet").popover('hide');
+				switch(type) {
+					case 'camera':
+						clickCamera();
+						break;
+					case 'gallery':
+						clickGallery();
+						break;
+					default:
+						break;
+				}
+			})
+			 
+		</script>
+	</body>
+
+</html>
